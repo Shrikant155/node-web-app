@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Hub - MongoDB Stack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- LOGIN SCREEN -->
+<div class="card" style="margin-bottom: 1.5rem; background: #eff6ff; border-left: 4px solid #2563eb;">
+    <marquee behavior="scroll" direction="left" scrollamount="5" style="font-weight: 600; color: #1e40af;">
+        🚀 Welcome to your MongoDB Profile Hub Dashboard! Manage your records securely with live database synchronization.
+    </marquee>
+</div>
+    <div id="loginSection" class="auth-container">
+        <div class="auth-card">
+            <h2><i class="fa-solid fa-user-lock"></i> User Login</h2>
+            <p>Enter your details (Validated Database Sync)</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="loginName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number (10 Digits)</label>
+                    <input type="tel" id="loginPhone" required pattern="[0-9]{10}" maxlength="10" placeholder="9876543210" title="Please enter exactly 10 digits">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login / Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD SCREEN -->
+    <div id="dashboardSection" class="app-container hidden">
+      <header class="app-header">
+    <div class="logo-container">
+        <!-- Circular Logo -->
+        <div class="circle-logo">S3</div>
+        <span class="brand-name">s3infosoft</span>
+    </div>
+    <div class="user-controls">
+        <span id="welcomeUser" class="welcome-text"></span>
+        <button id="logoutBtn" class="btn btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+</header>
+
+        <main class="dashboard-content">
+            <div class="action-bar">
+                <button id="openAddModal" class="btn btn-primary">
+                    <i class="fa-solid fa-user-plus"></i> Create New Profile
+                </button>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-list"></i> Directory Profiles (List Operations Active)</h3>
+                <div class="table-responsive">
+                    <table class="profile-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Actions (Update / Delete)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL FORM (CREATE / UPDATE) -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Create Profile</h3>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+            <form id="profileForm">
+                <input type="hidden" id="profileId">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="modalName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="modalEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number (10 Digits)</label>
+                    <input type="tel" id="modalPhone" required pattern="[0-9]{10}" maxlength="10" title="Please enter exactly 10 digits">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea id="modalAddress" rows="3" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancelModal" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save to Database</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
